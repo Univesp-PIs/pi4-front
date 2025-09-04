@@ -1,0 +1,12 @@
+[
+    {
+        "id": "1",
+        "name": "Compra do equipamento",
+        "is_enabled": true
+    },
+    {
+        "id": "2",
+        "name": "Homologação do projeto",
+        "is_enabled": false
+    }
+]

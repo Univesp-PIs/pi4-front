@@ -1,0 +1,505 @@
+{
+  "uuid": "6999367b-d531-4d4a-8d42-12923596f6ce",
+  "lastMigration": 32,
+  "name": "Mock",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "",
+  "folders": [
+    {
+      "uuid": "6533cc12-5d7d-423a-8ecb-855bf6f45a0f",
+      "name": "project",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "efebf6eb-44a4-42ed-835c-6d09d4f58344"
+        },
+        {
+          "type": "route",
+          "uuid": "e45ac0d5-1f95-48b5-b93c-e6b2db359683"
+        },
+        {
+          "type": "route",
+          "uuid": "b7ee1682-a88d-4c13-8c0d-fafb906391f6"
+        },
+        {
+          "type": "route",
+          "uuid": "c3f482d6-e37c-4ce3-894b-21ec406c07ba"
+        },
+        {
+          "type": "route",
+          "uuid": "82ab1e60-76ed-4505-a652-b7896f83d012"
+        }
+      ]
+    },
+    {
+      "uuid": "fbc04ba7-e83d-4895-bf1f-42f1c6f52ca2",
+      "name": "Status",
+      "children": [
+        {
+          "type": "route",
+          "uuid": "70410b66-c6b5-41cf-9dfe-c8492548b4df"
+        },
+        {
+          "type": "route",
+          "uuid": "ce928847-ca5c-415b-8d87-5ecb497e9fe5"
+        },
+        {
+          "type": "route",
+          "uuid": "450d57dd-e4dc-41eb-9def-7026c2ca996c"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "uuid": "a68d1dfe-37ad-4750-805c-474b7369fc9a",
+      "type": "http",
+      "documentation": "Status do projeto pesquisado",
+      "method": "get",
+      "endpoint": ":id",
+      "responses": [
+        {
+          "uuid": "a64a1c5c-06e5-48d7-8fff-9f8d1992a277",
+          "body": "[\n  {\n    \"description\": \"Compra do equipamento\",\n    \"status\": \"done\",\n    \"last_update\": \"12/02/2024\"\n  },\n  {\n    \"description\": \"Homologação do equipamento\",\n    \"status\": \"in progress\",\n    \"last_update\": \"12/02/2024\"\n  },\n  {\n    \"description\": \"Instalação\",\n    \"status\": \"waiting\",\n    \"last_update\": null\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "bf7f9af6-2406-4658-b4a4-3eb708201a52",
+          "body": "{\n  \"message\": \"Projeto não encontrado.\\nVerifique se a chave de acesso está correta\"\n}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "3d86e533-8a2b-47e6-ae40-e35ec77c66c6",
+      "type": "http",
+      "documentation": "Admin login",
+      "method": "post",
+      "endpoint": "admin/login",
+      "responses": [
+        {
+          "uuid": "466c3d12-4098-4a08-8572-dce4a9167f1e",
+          "body": "{\n\t\"message\": \"Login realizado com sucesso\",\n\t\"payload\": {\n\t\t\"token\": \"token-jwt\",\n\t\t\"expiry_timestamp\": 1714108743,\n\t\t\"user_id\": 1\n\t}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "efebf6eb-44a4-42ed-835c-6d09d4f58344",
+      "type": "http",
+      "documentation": "List all projects",
+      "method": "get",
+      "endpoint": "project",
+      "responses": [
+        {
+          "uuid": "a5b163f4-1ffc-42e2-8ff2-1f5c065a0069",
+          "body": "[\n  {\n    \"name\": \"projeto-1234\",\n    \"id\": \"1234\",\n    \"current_status\": {\n      \"id\": \"2\",\n      \"name\": \"Homologação\"\n    },\n    \"email\": \"email@exemplo.com\",\n    \"access_key\": \"12345\",\n  },\n  {\n    \"name\": \"projeto-4321\",\n    \"id\": \"4321\",\n    \"current_status\": {\n      \"id\": \"1\",\n      \"name\": \"Compra do equipamento\"\n    },\n    \"email\": \"email@exemplo.com\",\n    \"access_key\": \"12345\",\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Fill",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "2c05c742-be9a-4422-93d9-0b44e81718ca",
+          "body": "[\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Empty",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "f2d94122-80e1-4448-9765-b27d479bde42",
+          "body": "{\n  \"message\": \"Você não tem autorização para acessar este recurso\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "e45ac0d5-1f95-48b5-b93c-e6b2db359683",
+      "type": "http",
+      "documentation": "Create Project",
+      "method": "post",
+      "endpoint": "project",
+      "responses": [
+        {
+          "uuid": "e154e797-4fed-4c13-8b5e-dd4f751da960",
+          "body": "",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "70410b66-c6b5-41cf-9dfe-c8492548b4df",
+      "type": "http",
+      "documentation": "List all status",
+      "method": "get",
+      "endpoint": "status",
+      "responses": [
+        {
+          "uuid": "df32bdc5-c73b-4998-b5d4-14fe3d97eb17",
+          "body": "[\n  {\n    \"id\": \"1\",\n    \"name\": \"Compra do equipamento\",\n    \"is_enabled\": true\n  },\n  {\n    \"id\": \"2\",\n    \"name\": \"Homologação do projeto\",\n    \"is_enabled\": true\n  },\n  {\n    \"id\": \"3\",\n    \"name\": \"Recebimento do equipamento\",\n    \"is_enabled\": true\n  },\n  {\n    \"id\": \"4\",\n    \"name\": \"Instalação\",\n    \"is_enabled\": true\n  },\n  {\n    \"id\": \"5\",\n    \"name\": \"Vistoria e troca do medidor\",\n    \"is_enabled\": true\n  },\n  {\n    \"id\": \"6\",\n    \"name\": \"Configuração e monitoramento\",\n    \"is_enabled\": true\n  },\n  {\n    \"id\": \"7\",\n    \"name\": \"Entrega dos documentos\",\n    \"is_enabled\": true\n  },\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "b7ee1682-a88d-4c13-8c0d-fafb906391f6",
+      "type": "http",
+      "documentation": "[InProgress] Update project",
+      "method": "put",
+      "endpoint": "project/:project_id",
+      "responses": [
+        {
+          "uuid": "784046df-7c57-4bd4-a541-5707c731dcc1",
+          "body": "{\n  \"message\": \"Projeto editado com sucesso\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "c3f482d6-e37c-4ce3-894b-21ec406c07ba",
+      "type": "http",
+      "documentation": "Delete project",
+      "method": "delete",
+      "endpoint": "project/:project_id",
+      "responses": [
+        {
+          "uuid": "69be11dd-5f45-4802-8a54-97e8543ce4cc",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "82ab1e60-76ed-4505-a652-b7896f83d012",
+      "type": "http",
+      "documentation": "List all projects",
+      "method": "get",
+      "endpoint": "project/:id",
+      "responses": [
+        {
+          "uuid": "27f2f304-c155-4b8f-9b47-00db81fd2590",
+          "body": "{\n    \"email\": \"email do usuario\",\n    \"current_status_id\": \"1\",\n    \"project_name\": \"Projeto-1234\",\n    \"timelime\": [\n        {\n            \"id\": \"7\",\n            \"rank\": 0,\n            \"name\": \"Entrega dos documentos\",\n            \"last_update\": \"12/02/2024\",\n            \"status\": \"done\"\n        },\n        {\n            \"id\": \"1\",\n            \"rank\": 1,\n            \"name\": \"Compra do equipamento\",\n            \"last_update\": \"13/02/2024\",\n            \"status\": \"in progress\"\n        },\n        {\n            \"id\": \"2\",\n            \"rank\": 2,\n            \"name\": \"Homologação do projeto\",\n            \"last_update\": null,\n            \"status\": \"waiting\"\n        },\n        {\n            \"id\": \"3\",\n            \"rank\": 3,\n            \"name\": \"Recebimento do equipamento\",\n            \"last_update\": null,\n            \"status\": \"waiting\"\n        },\n        {\n            \"id\": \"4\",\n            \"rank\": 4,\n            \"name\": \"Instalação\",\n            \"last_update\": null,\n            \"status\": \"waiting\"\n        },\n        {\n            \"id\": \"5\",\n            \"rank\": 5,\n            \"name\": \"Vistoria e troca do medidor\",\n            \"last_update\": null,\n            \"status\": \"waiting\"\n        },\n        {\n            \"id\": \"6\",\n            \"rank\": 6,\n            \"name\": \"Configuração e monitoramento\",\n            \"last_update\": null,\n            \"status\": \"waiting\"\n        }\n    ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Fill",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "e5ac7d51-b2ac-4a32-9e5d-bdab02d8e2e7",
+          "body": "[\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Empty",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "58f0209f-ef68-441f-9a25-20b8884c21b5",
+          "body": "{\n  \"message\": \"Você não tem autorização para acessar este recurso\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "ce928847-ca5c-415b-8d87-5ecb497e9fe5",
+      "type": "http",
+      "documentation": "Create status",
+      "method": "post",
+      "endpoint": "status",
+      "responses": [
+        {
+          "uuid": "b6f02876-eef2-47db-9f38-66b64b405c62",
+          "body": "",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "450d57dd-e4dc-41eb-9def-7026c2ca996c",
+      "type": "http",
+      "documentation": "Update status",
+      "method": "put",
+      "endpoint": "status",
+      "responses": [
+        {
+          "uuid": "375210fb-3395-4c0b-ba84-aa5fcebbcf2d",
+          "body": "{\n  \"message\": \"Status editados com sucesso\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "a68d1dfe-37ad-4750-805c-474b7369fc9a"
+    },
+    {
+      "type": "route",
+      "uuid": "3d86e533-8a2b-47e6-ae40-e35ec77c66c6"
+    },
+    {
+      "type": "folder",
+      "uuid": "6533cc12-5d7d-423a-8ecb-855bf6f45a0f"
+    },
+    {
+      "type": "folder",
+      "uuid": "fbc04ba7-e83d-4895-bf1f-42f1c6f52ca2"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}

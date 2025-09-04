@@ -1,0 +1,56 @@
+{
+    "email": "email do usuario",
+    "current_status_id": "1",
+    "project_name": "Projeto-1234",
+    "timelime": [
+        {
+            "id": "7",
+            "rank": 0,
+            "name": "Entrega dos documentos",
+            "last_update": "12/02/2024",
+            "status": "done"
+        },
+        {
+            "id": "1",
+            "rank": 1,
+            "name": "Compra do equipamento",
+            "last_update": "13/02/2024",
+            "status": "in progress"
+        },
+        {
+            "id": "2",
+            "rank": 2,
+            "name": "Homologação do projeto",
+            "last_update": null,
+            "status": "waiting"
+        },
+        {
+            "id": "3",
+            "rank": 3,
+            "name": "Recebimento do equipamento",
+            "last_update": null,
+            "status": "waiting"
+        },
+        {
+            "id": "4",
+            "rank": 4,
+            "name": "Instalação",
+            "last_update": null,
+            "status": "waiting"
+        },
+        {
+            "id": "5",
+            "rank": 5,
+            "name": "Vistoria e troca do medidor",
+            "last_update": null,
+            "status": "waiting"
+        },
+        {
+            "id": "6",
+            "rank": 6,
+            "name": "Configuração e monitoramento",
+            "last_update": null,
+            "status": "waiting"
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  color: #000;
+  background: #fff;
+}
+
+.customTimeline .vertical-timeline-element-content {
+  padding-top: 0px!important;
+  box-shadow: none;
+}
+
+.customTimeline::before {
+  width: 10px!important;
+}
+
+@media only screen and (min-width: 1170px) {
+  .customTimeline::before {
+    margin-left: -4px!important;
+  }
+}
+
+.customTimeline .vertical-timeline-element-icon {
+  box-shadow: none;
+}
+.customTimeline .vertical-timeline-element-icon svg  {
+  width: 40px;
+  height: 40px;
+  margin-left: -20px;
+  margin-top: -20px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.tertiary');
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::selection {
+  background: theme('colors.secondary');
+  text-shadow: none;
+  color: #ffffff;
+}
